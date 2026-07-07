@@ -1,0 +1,13 @@
+flask
+flask-cors
+requests
+beautifulsoup4
+python-whois
+scikit-learn
+joblib
+pandas
+numpy
+transformers
+torch
+python-pptx
+gunicorn
