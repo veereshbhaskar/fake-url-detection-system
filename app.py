@@ -12,15 +12,14 @@ app = Flask(__name__)
 
 # Configuration
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-TEMPLATE_FOLDER = os.path.join(PROJECT_ROOT, 'index.html')
 
 @app.route('/')
 def home():
-    return send_from_directory(TEMPLATE_FOLDER, 'm.html')
+    return send_from_directory(PROJECT_ROOT, 'index.html')
 
 @app.route('/<path:filename>')
 def serve_static(filename):
-    return send_from_directory(TEMPLATE_FOLDER, filename)
+    return send_from_directory(PROJECT_ROOT, filename)
 
 @app.route('/api/analyze', methods=['POST'])
 def analyze_url():
@@ -207,4 +206,4 @@ def download_file(filename):
     return send_from_directory(reports_dir, filename, as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(debug=False, port=5000)
+    app.run(host='0.0.0.0', debug=False, port=5000)
